@@ -1,0 +1,12 @@
+extends ../layouts/application
+
+block content
+  h1 Create User
+  form(action="/users", method="POST")
+    label(for="name") Name:
+    input(name="name", type="text")
+    br
+    label(for="age") Age:
+    input(name="age", type="number")
+    br
+    button(type="submit") Create

@@ -1,0 +1,12 @@
+extends ../layouts/application
+
+block content
+  h1 Detail user
+    table
+      thead
+        td Name
+        td Age
+      tbody
+        tr
+          td= user.name
+          td= user.age

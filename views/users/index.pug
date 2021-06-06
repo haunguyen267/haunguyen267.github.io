@@ -1,0 +1,18 @@
+extends ../layouts/application
+
+block content
+  h1 #{name}
+  a(href="/users/new") Create user
+  form(action="/users/search", method="GET")
+    input(type="text", name="q", value=keyword)
+    button(type="submit") Search user
+
+  ul
+    each user in userArr
+      li
+        | Name:
+        span= user.name
+        | --- Age:
+        span= user.age
+        span &nbsp
+        a(href="/users/" + user.id) View
