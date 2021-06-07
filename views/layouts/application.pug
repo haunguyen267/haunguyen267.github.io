@@ -9,4 +9,6 @@ html
         .col-6
           .card.mt-5
             .card-body
+              if currentUser
+                span= currentUser.name
               block content
