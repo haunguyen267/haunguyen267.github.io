@@ -36,7 +36,9 @@ export const newUser = (req, res) => {
 };
 
 export const create = (req, res) => {
+  console.log(req.cookies);
   let newUser = {id: Math.floor(Math.random() * 10) + 3, ...req.body};
+
   userArr.push(newUser);
   res.redirect('/users');
 };

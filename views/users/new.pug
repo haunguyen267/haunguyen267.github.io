@@ -3,10 +3,19 @@ extends ../layouts/application
 block content
   h1 Create User
   form(action="/users", method="POST")
-    label(for="name") Name:
-    input(name="name", type="text")
-    br
-    label(for="age") Age:
-    input(name="age", type="number")
-    br
-    button(type="submit") Create
+    if errors
+      .alert.alert-danger
+        ul
+          each error in errors
+            li= error
+    .form-group.mb-3
+      label.form-label(for="name") Name
+      input#name.form-control(type="text",
+        name="name",
+        value= values ? values.name : "")
+    .form-group.mb-3
+      label.form-label(for="age") Age
+      input#age.form-control(type="number",
+        name="age",
+        value= values ? values.age : "")
+    button.btn.btn-primary(type="submit") Create
