@@ -1,19 +1,16 @@
-let userArr = [
-  {id: 1, name: 'Hau', age: 20},
-  {id: 2, name: 'Hau 2', age: 30},
-  {id: 3, name: 'Khoa', age: 26}
-]
+import USERARR from '../db.js';
+import bcrypt from 'bcrypt';
 
 export const index = (req, res) => {
   res.render('users/index', {
     name: "List",
-    userArr: userArr
+    userArr: USERARR
   });
 };
 
 export const show = (req, res) => {
   let id = parseInt(req.params.id);
-  let userDetail = userArr.find(user => user.id == id);
+  let userDetail = USERARR.find(user => user.id == id);
 
   res.render('users/show', {
     user: userDetail
@@ -21,7 +18,7 @@ export const show = (req, res) => {
 };
 
 export const search = (req, res) => {
-  let filteredData = userArr
+  let filteredData = USERARR
     .filter((user) => user.name.toLowerCase().includes(req.query.q));
 
   res.render('users/index', {
@@ -36,9 +33,12 @@ export const newUser = (req, res) => {
 };
 
 export const create = (req, res) => {
-  console.log(req.cookies);
-  let newUser = {id: Math.floor(Math.random() * 10) + 3, ...req.body};
+  let newUser = {
+    id: Math.floor(Math.random() * 10) + 3,
+    ...req.body,
+    password: bcrypt.hashSync(req.body.password, 10)
+  };
 
-  userArr.push(newUser);
+  USERARR.push(newUser);
   res.redirect('/users');
 };
