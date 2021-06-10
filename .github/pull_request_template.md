@@ -10,6 +10,7 @@
 
 ## Phạm vi ảnh hưởng
 > *Xem xét lại việc thêm PR này có sửa đổi, ảnh hưởng tới những chức năng đã có không? Nếu có thì đã test lại chưa? Liệt kê tại mục này*
+## Screenshots
 
 ## Pre Pull Request
 > *Tích chọn mục đã hoàn thành trong danh sách đây:*
