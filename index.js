@@ -6,6 +6,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import authRoutes from './routes/auth.routes.js';
 import userRoutes from './routes/users.routes.js';
+import productRoutes from './routes/products.routes.js';
 import * as authMiddleware from './middlewares/auth.middlewares.js';
 // import { Low, JSONFile } from 'lowdb';
 // const adapter = new JSONFile('db.json');
@@ -23,6 +24,7 @@ app.use(express.static('public'));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 app.use('/auth', authRoutes);
 app.use('/users', authMiddleware.requireLogin, userRoutes);
+app.use('/products', productRoutes);
 
 app.listen(port, () => {
   console.log('Server is listening on port ' + port);

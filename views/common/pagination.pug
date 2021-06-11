@@ -1,0 +1,26 @@
+nav
+  ul.pagination
+    if previousPage == -1
+      li.page-item.disabled
+        a.page-link(href="#")
+          span &laquo;
+    else
+      li.page-item
+        a.page-link(href="?page=" + previousPage)
+          span &laquo;
+    - var n = 1;
+    while n <= totalPage
+      if n == currentPage
+        li.page-item.active
+          a.page-link(href="?page=" + n)= n++
+      else
+        li.page-item
+          a.page-link(href="?page=" + n)= n++
+    if nextPage == -1
+      li.page-item.disabled
+        a.page-link(href="#")
+          span &raquo;
+    else
+      li.page-item
+        a.page-link(href="?page=" + nextPage)
+          span &raquo;
