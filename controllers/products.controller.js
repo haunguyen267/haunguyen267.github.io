@@ -1,4 +1,4 @@
-import PRODUCTARR from '../db_product.js';
+import { PRODUCTARR } from '../db_product.js';
 import { truncateParagraph, pagination } from '../utils.js';
 
 export const index = (req, res) => {

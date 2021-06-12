@@ -10,6 +10,8 @@ block content
   ul
     each user in userArr
       li
+        if user.avatar
+          img(src=user.avatar, alt=user.name, width="50")
         | Name:
         span= user.name
         | --- Age:

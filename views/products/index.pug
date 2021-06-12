@@ -11,3 +11,4 @@ block content
           h5.card-title= product.name
           p.card-text= truncateParagraph(product.description, process.env.MAXLENGTH_PARA)
           a.btn.btn-primary(href="#") Detail
+          a.btn.btn-warning.mx-2(href="/cart/add/" + product.id) Add to cart
