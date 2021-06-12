@@ -29,14 +29,18 @@ export const search = (req, res) => {
 };
 
 export const newUser = (req, res) => {
-  res.render('users/new');
+  res.render('users/new', {
+    csrfToken: req.csrfToken()
+  });
 };
 
 export const create = (req, res) => {
+  let avatarPath = req.file.path.split('/').slice(1).join('/');
   let newUser = {
     id: Math.floor(Math.random() * 10) + 3,
     ...req.body,
-    password: bcrypt.hashSync(req.body.password, 10)
+    password: bcrypt.hashSync(req.body.password, 10),
+    avatar: avatarPath
   };
 
   USERARR.push(newUser);

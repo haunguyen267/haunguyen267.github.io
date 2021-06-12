@@ -1,4 +1,4 @@
-const PRODUCTARR = [
+export const PRODUCTARR = [
   {
     "id": 1,
     "name": "Beef Dry Aged Tenderloin Aaa",
@@ -502,4 +502,4 @@ const PRODUCTARR = [
   }
 ]
 
-export default PRODUCTARR;
+export const SESSIONARR = [];

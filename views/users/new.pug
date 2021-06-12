@@ -2,7 +2,8 @@ extends ../layouts/application
 
 block content
   h1 Create User
-  form(action="/users", method="POST")
+  form(action="/users", method="POST", enctype="multipart/form-data")
+    input(type="hidden", name="_csrf", value=csrfToken)
     if errors
       .alert.alert-danger
         ul
@@ -28,4 +29,9 @@ block content
       input#password.form-control(type="password",
         name="password",
         value= values ? values.password : "")
+    .form-group.mb-3
+      label.form-label(for="avatar") Avatar
+      input#avatar.form-control(type="file",
+        name="avatar",
+        value= values ? values.avatar : "")
     button.btn.btn-primary(type="submit") Create
