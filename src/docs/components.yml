@@ -18,7 +18,25 @@ components:
         email: fake@example.com
         name: fake name
         role: user
-
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        image:
+          type: string
+        tags:
+          type: arrays
+      example:
+        id: 5ebac534954b54139806c112
+        name: fake name
+        description: Description nha
+        image: http://dummyimage.com/237x100.png/dddddd/000000
+        tags: ['hello', 'ok']
     Token:
       type: object
       properties:
@@ -57,6 +75,15 @@ components:
           example:
             code: 400
             message: Email already taken
+    DuplicateProductName:
+      description: Product name already taken
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            code: 400
+            message: Product name already taken
     Unauthorized:
       description: Unauthorized
       content:
