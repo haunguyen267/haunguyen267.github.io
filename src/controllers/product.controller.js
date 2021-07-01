@@ -20,7 +20,8 @@ const getProduct = catchAsync(async (req, res) => {
 });
 
 const createProduct = catchAsync(async (req, res) => {
-  const product = await productService.createProduct(req.body);
+  const imageUrl = req.file.path.split('/').slice(1).join('/');
+  const product = await productService.createProduct({ ...req.body, image: imageUrl });
   res.status(httpStatus.CREATED).send(product);
 });
 

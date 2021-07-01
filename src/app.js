@@ -20,6 +20,8 @@ if (config.env !== 'test') {
   app.use(morgan.successHandler);
   app.use(morgan.errorHandler);
 }
+// serve static files
+app.use(express.static('public'));
 
 // set security HTTP headers
 app.use(helmet());

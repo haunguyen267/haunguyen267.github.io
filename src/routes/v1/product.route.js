@@ -5,11 +5,17 @@ const productValidation = require('../../validations/product.validation');
 const productController = require('../../controllers/product.controller');
 
 const router = express.Router();
+const upload = require('../../config/multer');
 
 router
   .route('/')
   .get(auth('getProducts'), validate(productValidation.getProducts), productController.getProducts)
-  .post(auth('createProduct'), validate(productValidation.createProduct), productController.createProduct);
+  .post(
+    auth('createProduct'),
+    upload.single('image'),
+    validate(productValidation.createProduct),
+    productController.createProduct
+  );
 
 router
   .route('/import')
